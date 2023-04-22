@@ -1,9 +1,11 @@
 variable "project_id" {
   description = "project id"
+  default = "barry-mullan"
 }
 
 variable "region" {
   description = "region"
+  default = "us-central1"
 }
 
 variable "zone" {
@@ -13,6 +15,7 @@ variable "zone" {
 
 variable "terraform_service_account" {
     type = string
+    default = "terraform@barry-mullan.iam.gserviceaccount.com"
 }
 
 variable "network_subnet_0_cidr" {
@@ -22,5 +25,5 @@ variable "network_subnet_0_cidr" {
 
 variable "prefix" {
     type = string
-    default = "hes"
+    default = "cscie49"
 }
