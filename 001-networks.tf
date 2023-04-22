@@ -1,4 +1,9 @@
 
+
+resource "null_resource" "cluster" {
+  
+}
+
 resource "google_compute_network" "vpc_network" {
   name                    = "${var.prefix}-network"
   auto_create_subnetworks = "false"
