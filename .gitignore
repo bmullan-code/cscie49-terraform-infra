@@ -1,4 +1,5 @@
 # Local .terraform directorie
+github-token.txt
 .terraform.lock.hcl
 **/.terraform/*
 
