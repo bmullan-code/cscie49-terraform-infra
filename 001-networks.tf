@@ -15,14 +15,6 @@ resource "google_compute_subnetwork" "vpc_subnet" {
     network       = google_compute_network.vpc_network.id
 }
 
-# "10.1.0.0/24"
-resource "google_compute_subnetwork" "vpc_subnet2" {
-    name          = "${var.prefix}-subnet2"
-    ip_cidr_range = "10.1.2.0/24"
-    region        = var.region
-    network       = google_compute_network.vpc_network.id
-}
-
 resource "google_compute_router" "router" {
   name    = "${var.prefix}-router"
   region  = google_compute_subnetwork.vpc_subnet.region
