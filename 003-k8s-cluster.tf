@@ -1,6 +1,6 @@
 
 resource "google_container_cluster" "primary" {
-  name = "${var.project_id}-gke"
+  name = "${var.prefix}-${var.project_id}-gke"
   location = var.region
   remove_default_node_pool = true
   initial_node_count = 1
@@ -9,8 +9,8 @@ resource "google_container_cluster" "primary" {
   subnetwork = google_compute_subnetwork.subnet.self_link
 
   ip_allocation_policy {
-    cluster_secondary_range_name  = "${var.project_id}-cluster"
-    services_secondary_range_name = "${var.project_id}-services"
+    cluster_secondary_range_name  = "${var.prefix}-${var.project_id}-cluster"
+    services_secondary_range_name = "${var.prefix}-${var.project_id}-services"
   }
 
   # other settings...
@@ -38,9 +38,8 @@ resource "google_container_node_pool" "primary_nodes" {
       env = var.project_id
     }
 
-    # preemptible  = true
     machine_type = "n1-standard-1"
-    tags         = ["gke-node", "${var.project_id}-gke"]
+    tags         = ["gke-node", "${var.prefix}-${var.project_id}-gke"]
     metadata = {
       disable-legacy-endpoints = "true"
     }
