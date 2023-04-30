@@ -21,7 +21,8 @@ resource "google_container_cluster" "primary" {
 # Separately Managed Node Pool
 resource "google_container_node_pool" "primary_nodes" {
   name       = "${google_container_cluster.primary.name}"
-  location   = var.region
+  # location   = var.region
+  location   = var.zone
   cluster    = google_container_cluster.primary.name
   node_count = var.gke_num_nodes
 
@@ -40,7 +41,7 @@ resource "google_container_node_pool" "primary_nodes" {
     }
 
     machine_type = "n1-standard-1"
-    tags         = ["gke-node", "${var.prefix}-${var.project_id}-gke"]
+    # tags         = ["gke-node", "${var.prefix}-${var.project_id}-gke"]
     metadata = {
       disable-legacy-endpoints = "true"
     }
