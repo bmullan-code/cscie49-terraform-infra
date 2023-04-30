@@ -28,12 +28,6 @@ variable "prefix" {
     default = "cscie49"
 }
 
-
-variable "terraform_service_account" {
-    type = string
-}
-
-
 variable "gke_num_nodes" {
   default     = 3
   description = "number of gke nodes"
