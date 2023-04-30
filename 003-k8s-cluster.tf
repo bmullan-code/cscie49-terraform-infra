@@ -1,7 +1,8 @@
 
 resource "google_container_cluster" "primary" {
   name = "${var.prefix}-${var.project_id}-gke"
-  location = var.region
+  # location = var.region
+  location = var.zone
   remove_default_node_pool = true
   initial_node_count = 1
 
