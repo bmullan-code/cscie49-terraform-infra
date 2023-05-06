@@ -15,9 +15,6 @@ resource "google_container_cluster" "primary" {
     services_secondary_range_name = "${var.prefix}-${var.project_id}-services"
   }
 
-  shielded_instance_config {
-    enable_secure_boot = true
-  }
 }
 
 # Separately Managed Node Pool
@@ -43,6 +40,8 @@ resource "google_container_node_pool" "primary_nodes" {
     }
 
     machine_type = "n1-standard-1"
+    enable_secure_boot = true
+    enable_integrity_monitoring = true
 
     metadata = {
       disable-legacy-endpoints = "true"
