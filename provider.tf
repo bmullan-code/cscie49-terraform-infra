@@ -1,8 +1,14 @@
 terraform {
- backend "gcs" {
-   bucket  = "cscie49-terraform-state"
-   prefix  = "terraform/state"
- }
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = "4.61.0"
+    }
+  }
+  backend "gcs" {
+    bucket  = "cscie49-terraform-state"
+    prefix  = "terraform/state"
+  }
 }
 
 # cscie49-terraform-state
