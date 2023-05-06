@@ -1,3 +1,4 @@
+# gke cluster
 
 resource "google_container_cluster" "primary" {
   name = "${var.prefix}-${var.project_id}-gke"
@@ -14,9 +15,10 @@ resource "google_container_cluster" "primary" {
     services_secondary_range_name = "${var.prefix}-${var.project_id}-services"
   }
 
-  # other settings...
+  shielded_instance_config {
+    enable_secure_boot = true
+  }
 }
-
 
 # Separately Managed Node Pool
 resource "google_container_node_pool" "primary_nodes" {
@@ -41,7 +43,7 @@ resource "google_container_node_pool" "primary_nodes" {
     }
 
     machine_type = "n1-standard-1"
-    # tags         = ["gke-node", "${var.prefix}-${var.project_id}-gke"]
+
     metadata = {
       disable-legacy-endpoints = "true"
     }

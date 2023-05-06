@@ -4,7 +4,7 @@ resource "google_compute_network" "vpc" {
   auto_create_subnetworks = "false"
 }
 
-
+# Subnets
 resource "google_compute_subnetwork" "subnet" {
   name          = "${var.prefix}-${var.project_id}-subnet"
   ip_cidr_range = "10.255.0.0/16"
