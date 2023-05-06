@@ -14,11 +14,6 @@ resource "google_container_cluster" "primary" {
     cluster_secondary_range_name  = "${var.prefix}-${var.project_id}-cluster"
     services_secondary_range_name = "${var.prefix}-${var.project_id}-services"
   }
-  auto_provisioning_defaults {
-    shielded_instance_config {
-      enable_secure_boot = true
-    }
-  }
 }
 
 # Separately Managed Node Pool
